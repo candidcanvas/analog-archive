@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width initial-scale=1"
+  />
+
+  <title>Managing Data</title>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap"
+    rel="stylesheet"
+  >
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+
+  <!--  DOMPurify cleans up HTML to prevent XSS attacks
+  https://www.jsdelivr.com/package/npm/dompurify  -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.3.0/dist/purify.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <h1>Image Uploads</h1>
+    <h4>CRUD + <a href="https://vercel.com/docs/vercel-blob">blob storage</a> = 💖</h4>
+  </header>
+  <section id="status">
+    <p id="readyStatus">✅ MongoDB is Ready</p>
+    <p id="notReadyStatus">❌ MongoDB is not connected. Please check your connection string in <code>.env</code> file.
+    </p>
+  </section>
+  <button id="createButton">Create New Cat</button>
+
+  <dialog id="formDialog">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>🐈 Share a Cat</h2>
+        <p>Share your kitty with the community</p>
+      </div>
+
+      <div class="modal-body">
+        <form
+          id="myForm"
+          method="dialog"
+        >
+          <!-- Hidden field to store ID for updates -->
+          <input
+            type="hidden"
+            name="id"
+            id="id"
+          />
+
+          <!-- Hidden field to store image data -->
+          <input
+            type="hidden"
+            name="imageUrl"
+            id="imageUrl"
+          />
+
+          <!-- Image upload section -->
+          <fieldset class="upload-fieldset">
+            <legend>Cat Photo</legend>
+            <div id="uploadArea">
+              <img
+                id="imagePreview"
+                src="assets/photo.svg"
+                alt="Image preview"
+              />
+              <div class="upload-controls">
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  style="display:none"
+                />
+                <button
+                  type="button"
+                  id="browseButton"
+                >Browse</button>
+                <button
+                  type="button"
+                  id="removeImageButton"
+                  style="display:none;"
+                >Remove</button>
+                <p id="uploadInstructions">or drag and drop an image here</p>
+              </div>
+            </div>
+            <div
+              id="noticeArea"
+              style="display:none"
+            ></div>
+          </fieldset>
+
+          <fieldset>
+            <label for="name">Cat Name</label>
+            <input
+              required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="e.g. Sofia"
+              autocomplete="off"
+            />
+            <small class="validation">Name is required</small>
+          </fieldset>
+
+          <fieldset>
+            <label for="birthDate">Birth Date</label>
+            <input
+              type="date"
+              name="birthDate"
+              id="birthDate"
+            />
+          </fieldset>
+
+          <fieldset>
+            <label for="primaryColor">Primary Color</label>
+            <input
+              type="color"
+              name="primaryColor"
+              id="primaryColor"
+              value="#5f5854"
+            />
+          </fieldset>
+
+          <fieldset>
+            <label for="secondaryColor">Secondary Color</label>
+            <input
+              type="color"
+              name="secondaryColor"
+              id="secondaryColor"
+              value="#c4c8cf"
+            />
+          </fieldset>
+
+          <fieldset>
+            <label for="breed">Breed</label>
+            <select
+              name="breed"
+              id="breed"
+            >
+              <option
+                value=""
+                disabled
+                selected
+              >Select a Breed</option>
+              <optgroup label="Domestic">
+                <option value="Abyssinian">Abyssinian</option>
+                <option value="Bengal">Bengal</option>
+                <option value="Burmese">Burmese</option>
+                <option value="Chartreux">Chartreux</option>
+                <option value="Maine Coon">Maine Coon</option>
+                <option value="Persian">Persian</option>
+                <option value="Ragdoll">Ragdoll</option>
+                <option value="Shorthair">Shorthair</option>
+                <option value="Siamese">Siamese</option>
+                <option value="Sphynx">Sphynx</option>
+                <option value="Ragamuffin">Ragamuffin</option>
+              </optgroup>
+              <optgroup label="Exotic">
+                <option value="Tiger">Tiger</option>
+                <option value="Lion">Lion</option>
+                <option value="Panther">Panther</option>
+                <option value="Jaguar">Jaguar</option>
+                <option value="Lynx">Lynx</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="Other">Other</option>
+                <option value="Unknown">Unknown</option>
+              </optgroup>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <label for="description">Description</label>
+            <small>Provide a brief biography.</small>
+            <textarea
+              placeholder="Biography"
+              required
+              minlength="20"
+              name="description"
+              id="description"
+              rows="6"
+              cols="30"
+            ></textarea>
+            <small class="validation">Bio must be at least 20 characters.</small>
+          </fieldset>
+
+          <fieldset>
+            <label for="playfulness">Playfulness</label>
+            <small>Chill or chaotic?</small>
+            <input
+              type="range"
+              min="0"
+              max="10"
+              name="playfulness"
+              id="playfulness"
+            />
+          </fieldset>
+
+          <fieldset>
+            <label for="appetite">Appetite</label>
+            <small>Is this a hungry Cat?</small>
+            <input
+              type="range"
+              min="0"
+              max="10"
+              name="appetite"
+              id="appetite"
+            />
+          </fieldset>
+
+          <fieldset>
+            <legend>Food</legend>
+            <small>Any Preferences?</small>
+            <label for="wet">
+              <input
+                type="radio"
+                id="wet"
+                name="food"
+                value="wet"
+              />
+              <span>Wet</span>
+            </label>
+            <label for="dry">
+              <input
+                type="radio"
+                id="dry"
+                name="food"
+                value="dry"
+              />
+              <span>Dry</span>
+            </label>
+            <label for="mixed">
+              <input
+                type="radio"
+                id="mixed"
+                name="food"
+                value="mixed"
+              />
+              <span>Mixed</span>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Rescue Status</legend>
+            <label for="isAdopted">
+              <input
+                type="checkbox"
+                name="isAdopted"
+                id="isAdopted"
+              />
+              <span>Adopted</span>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <label for="microchip">Microchip Number</label>
+            <small>It's usually nine digits</small>
+            <input
+              required
+              type="number"
+              name="microchip"
+              step="1"
+              max="999999999"
+              id="microchip"
+              placeholder="e.g. 123456789"
+            />
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="save"
+          id="saveButton"
+        >Save</button>
+        <button
+          type="button"
+          class="cancel"
+          id="cancelButton"
+        >Cancel</button>
+      </div>
+    </div>
+  </dialog>
+
+  <main>
+    <h2>🐈 Noteworthy Cats</h2>
+    <section id="contentArea"></section>
+  </main>
+
+  <section id="intro">
+    <h3>About</h3>
+    <p>Building on <a href="https://github.com/ixd-system-design/Managing-Data">prior explorations with CRUD</a>,
+      this demo adds functionality for photo uploads. This application demonstrates how to handle image uploads,
+      process them on the server, and store them in the cloud using <a href="https://vercel.com/docs/vercel-blob">Vercel
+        Blob Storage</a>.
+    </p>
+    <p>The upload workflow involves several key technologies working together:
+    <ol>
+      <li><strong>Custom Upload UI:</strong> The default file input has been enhanced with a custom interface that
+        supports both browsing and drag-and-drop functionality (on devices with a mouse).</li>
+      <li><strong>BusBoy:</strong> On the backend, the <a href="https://www.npmjs.com/package/busboy">BusBoy</a>
+        library parses multipart form data to handle file uploads.</li>
+      <li><strong>Sharp:</strong> The <a href="https://sharp.pixelplumbing.com/">Sharp</a> library resizes uploaded
+        images to a predictable size, ensuring performance and preventing system abuse.</li>
+      <li><strong>Vercel Blob Storage:</strong> Processed images are stored in the cloud, generating a public URL
+        which is then saved to MongoDB as a string reference.</li>
+    </ol>
+    </p>
+    <p>
+      The application maintains full CRUD functionality. When editing an item, the ID is stored in a hidden input field
+      to track which record is being modified. Image URLs are also stored in a hidden field, allowing the system to
+      manage both text data and image references seamlessly.
+    </p>
+
+    <h3>Learning Prompts</h3>
+    <p>Can you create a system map to describe the architecture of this web app?</p>
+    <p>Having added an image upload capability, what new use cases emerge?</p>
+    <p>Try uploading an image: drag and drop a photo, or click Browse to select one. Notice how it gets resized and
+      stored in the cloud.</p>
+    <p>Explore how the form handles both text fields and file uploads together in a single submission.</p>
+  </section>
+
+  <footer>
+    Created by <a href="https://nsitu.ca">Harold Sikkema</a> in the context of
+    Systems Design in the Interaction Design program at Sheridan College.
+  </footer>
+
+  <script
+    src="script.js"
+    type="module"
+  ></script>
+
+  <script src="upload.js"></script>
+
+</body>
+
+</html>
