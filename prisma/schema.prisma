@@ -29,3 +29,32 @@ model cats {
   food           String?
   imageUrl       String?
 }
+
+model vinyl_records {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  artist        String?
+  releaseDate   DateTime?       @db.Date
+  genre         String?
+  label         String?
+  catalogNumber String?
+  format        String?         // e.g. LP, 7", 12"
+  speed         Int?            // 33, 45, 78
+  country       String?
+  notes         String?
+  imageUrl      String?
+  createdAt     DateTime        @default(now()) @db.Date
+  updatedAt     DateTime        @updatedAt @db.Date
+}
+
+model albums {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  artist        String
+  dateBought    DateTime?       @db.Date
+  storeId       String?
+  notes         String?
+  imageUrl      String?
+  createdAt     DateTime        @default(now()) @db.Date
+  updatedAt     DateTime        @updatedAt @db.Date
+}
