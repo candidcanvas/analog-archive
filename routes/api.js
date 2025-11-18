@@ -126,7 +126,7 @@ router.put('/data/:id', async (req, res) => {
 router.delete('/data/:id', async (req, res) => {
     try {
         // Get the cat record first to get the image URL
-        const cat = await prisma[model].findUnique({
+        const albums = await prisma[model].findUnique({
             where: { id: req.params.id }
         })
 
