@@ -7,37 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Removed `cats` model in favor of an `albums`-first data model.
-// The `albums` model (below) contains fields appropriate for music albums.
-
-model vinyl_records {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  artist        String?
-  releaseDate   DateTime?       @db.Date
-  genre         String?
-  label         String?
-  catalogNumber String?
-  format        String?         // e.g. LP, 7", 12"
-  speed         Int?            // 33, 45, 78
-  country       String?
-  notes         String?
-  imageUrl      String?
-  createdAt     DateTime        @default(now()) @db.Date
-  updatedAt     DateTime        @updatedAt @db.Date
-}
-
 model albums {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  artist        String
-  dateBought    DateTime?       @db.Date
-  storeId       String?
-  version       String?         // album variants
-  releaseType  String?         // single, ep, full length
-  format       String?         // vinyl, cd, cassette
-  notes         String?
-  imageUrl      String?
-  createdAt     DateTime        @default(now()) @db.Date
-  updatedAt     DateTime        @updatedAt @db.Date
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  artist      String
+  dateBought  DateTime? @db.Date
+  storeId     String?
+  version     String? // album variants
+  releaseType String? // single, ep, full length
+  format      String? // vinyl, cd, cassette
+  notes       String?
+  imageUrl    String?
+  createdAt   DateTime  @default(now()) @db.Date
+  updatedAt   DateTime  @updatedAt @db.Date
 }
