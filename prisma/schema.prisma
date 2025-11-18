@@ -7,28 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model cats {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  adoptionDate   DateTime? @db.Date
-  birthDate      DateTime? @db.Date
-  breed          String?
-  declawed       Boolean?
-  description    String?
-  fosterDate     DateTime? @db.Date
-  fosterDuration Int?
-  location       String?
-  name           String?
-  neutered       Boolean?
-  sex            String?
-  primaryColor   String?
-  secondaryColor String?
-  playfulness    Int?
-  appetite       Int?
-  microchip      Int?
-  isAdopted      Boolean?
-  food           String?
-  imageUrl       String?
-}
+// Removed `cats` model in favor of an `albums`-first data model.
+// The `albums` model (below) contains fields appropriate for music albums.
 
 model vinyl_records {
   id            String          @id @default(auto()) @map("_id") @db.ObjectId
@@ -53,6 +33,9 @@ model albums {
   artist        String
   dateBought    DateTime?       @db.Date
   storeId       String?
+  version       String?         // album variants
+  releaseType  String?         // single, ep, full length
+  format       String?         // vinyl, cd, cassette
   notes         String?
   imageUrl      String?
   createdAt     DateTime        @default(now()) @db.Date

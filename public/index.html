@@ -44,13 +44,13 @@
     <p id="notReadyStatus">❌ MongoDB is not connected. Please check your connection string in <code>.env</code> file.
     </p>
   </section>
-  <button id="createButton">Create New Cat</button>
+  <button id="createButton">Create New Album</button>
 
   <dialog id="formDialog">
     <div class="modal-container">
       <div class="modal-header">
-        <h2>🐈 Share a Cat</h2>
-        <p>Share your kitty with the community</p>
+        <h2>🎵 Add an Album</h2>
+        <p>Share your record with the collection</p>
       </div>
 
       <div class="modal-body">
@@ -74,7 +74,7 @@
 
           <!-- Image upload section -->
           <fieldset class="upload-fieldset">
-            <legend>Cat Photo</legend>
+            <legend>Album Cover</legend>
             <div id="uploadArea">
               <img
                 id="imagePreview"
@@ -107,180 +107,90 @@
           </fieldset>
 
           <fieldset>
-            <label for="name">Cat Name</label>
+            <label for="title">Album Title</label>
             <input
               required
               type="text"
-              name="name"
-              id="name"
-              placeholder="e.g. Sofia"
+              name="title"
+              id="title"
+              placeholder="e.g. Dark Side of the Moon"
               autocomplete="off"
             />
-            <small class="validation">Name is required</small>
+            <small class="validation">Title is required</small>
           </fieldset>
 
           <fieldset>
-            <label for="birthDate">Birth Date</label>
+            <label for="artist">Artist</label>
+            <input
+              required
+              type="text"
+              name="artist"
+              id="artist"
+              placeholder="e.g. Pink Floyd"
+              autocomplete="off"
+            />
+            <small class="validation">Artist is required</small>
+          </fieldset>
+
+          <fieldset>
+            <label for="dateBought">Date Bought</label>
             <input
               type="date"
-              name="birthDate"
-              id="birthDate"
+              name="dateBought"
+              id="dateBought"
             />
           </fieldset>
 
           <fieldset>
-            <label for="primaryColor">Primary Color</label>
+            <label for="storeId">Store / Vendor</label>
             <input
-              type="color"
-              name="primaryColor"
-              id="primaryColor"
-              value="#5f5854"
+              type="text"
+              name="storeId"
+              id="storeId"
+              placeholder="Record Store or Vendor"
             />
           </fieldset>
 
           <fieldset>
-            <label for="secondaryColor">Secondary Color</label>
+            <label for="version">Version</label>
             <input
-              type="color"
-              name="secondaryColor"
-              id="secondaryColor"
-              value="#c4c8cf"
+              type="text"
+              name="version"
+              id="version"
+              placeholder="e.g. Original, Reissue, Remastered"
             />
           </fieldset>
 
           <fieldset>
-            <label for="breed">Breed</label>
-            <select
-              name="breed"
-              id="breed"
-            >
-              <option
-                value=""
-                disabled
-                selected
-              >Select a Breed</option>
-              <optgroup label="Domestic">
-                <option value="Abyssinian">Abyssinian</option>
-                <option value="Bengal">Bengal</option>
-                <option value="Burmese">Burmese</option>
-                <option value="Chartreux">Chartreux</option>
-                <option value="Maine Coon">Maine Coon</option>
-                <option value="Persian">Persian</option>
-                <option value="Ragdoll">Ragdoll</option>
-                <option value="Shorthair">Shorthair</option>
-                <option value="Siamese">Siamese</option>
-                <option value="Sphynx">Sphynx</option>
-                <option value="Ragamuffin">Ragamuffin</option>
-              </optgroup>
-              <optgroup label="Exotic">
-                <option value="Tiger">Tiger</option>
-                <option value="Lion">Lion</option>
-                <option value="Panther">Panther</option>
-                <option value="Jaguar">Jaguar</option>
-                <option value="Lynx">Lynx</option>
-              </optgroup>
-              <optgroup label="Other">
-                <option value="Other">Other</option>
-                <option value="Unknown">Unknown</option>
-              </optgroup>
+            <label for="releaseType">Release Type</label>
+            <select name="releaseType" id="releaseType">
+              <option value="" disabled selected>Select a type</option>
+              <option value="single">Single</option>
+              <option value="ep">EP</option>
+              <option value="full-length">Full Length</option>
             </select>
           </fieldset>
 
           <fieldset>
-            <label for="description">Description</label>
-            <small>Provide a brief biography.</small>
+            <label for="format">Format</label>
+            <select name="format" id="format">
+              <option value="" disabled selected>Select a format</option>
+              <option value="vinyl">Vinyl</option>
+              <option value="cd">CD</option>
+              <option value="cassette">Cassette</option>
+              <option value="digital">Digital</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <label for="notes">Notes</label>
             <textarea
-              placeholder="Biography"
-              required
-              minlength="20"
-              name="description"
-              id="description"
-              rows="6"
+              placeholder="Notes about pressing, condition, or special edition"
+              name="notes"
+              id="notes"
+              rows="5"
               cols="30"
             ></textarea>
-            <small class="validation">Bio must be at least 20 characters.</small>
-          </fieldset>
-
-          <fieldset>
-            <label for="playfulness">Playfulness</label>
-            <small>Chill or chaotic?</small>
-            <input
-              type="range"
-              min="0"
-              max="10"
-              name="playfulness"
-              id="playfulness"
-            />
-          </fieldset>
-
-          <fieldset>
-            <label for="appetite">Appetite</label>
-            <small>Is this a hungry Cat?</small>
-            <input
-              type="range"
-              min="0"
-              max="10"
-              name="appetite"
-              id="appetite"
-            />
-          </fieldset>
-
-          <fieldset>
-            <legend>Food</legend>
-            <small>Any Preferences?</small>
-            <label for="wet">
-              <input
-                type="radio"
-                id="wet"
-                name="food"
-                value="wet"
-              />
-              <span>Wet</span>
-            </label>
-            <label for="dry">
-              <input
-                type="radio"
-                id="dry"
-                name="food"
-                value="dry"
-              />
-              <span>Dry</span>
-            </label>
-            <label for="mixed">
-              <input
-                type="radio"
-                id="mixed"
-                name="food"
-                value="mixed"
-              />
-              <span>Mixed</span>
-            </label>
-          </fieldset>
-
-          <fieldset>
-            <legend>Rescue Status</legend>
-            <label for="isAdopted">
-              <input
-                type="checkbox"
-                name="isAdopted"
-                id="isAdopted"
-              />
-              <span>Adopted</span>
-            </label>
-          </fieldset>
-
-          <fieldset>
-            <label for="microchip">Microchip Number</label>
-            <small>It's usually nine digits</small>
-            <input
-              required
-              type="number"
-              name="microchip"
-              step="1"
-              max="999999999"
-              id="microchip"
-              placeholder="e.g. 123456789"
-            />
           </fieldset>
         </form>
       </div>
