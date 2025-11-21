@@ -216,40 +216,15 @@
 
   <section id="intro">
     <h3>About</h3>
-    <p>Building on <a href="https://github.com/ixd-system-design/Managing-Data">prior explorations with CRUD</a>,
-      this demo adds functionality for photo uploads. This application demonstrates how to handle image uploads,
-      process them on the server, and store them in the cloud using <a href="https://vercel.com/docs/vercel-blob">Vercel
-        Blob Storage</a>.
-    </p>
-    <p>The upload workflow involves several key technologies working together:
-    <ol>
-      <li><strong>Custom Upload UI:</strong> The default file input has been enhanced with a custom interface that
-        supports both browsing and drag-and-drop functionality (on devices with a mouse).</li>
-      <li><strong>BusBoy:</strong> On the backend, the <a href="https://www.npmjs.com/package/busboy">BusBoy</a>
-        library parses multipart form data to handle file uploads.</li>
-      <li><strong>Sharp:</strong> The <a href="https://sharp.pixelplumbing.com/">Sharp</a> library resizes uploaded
-        images to a predictable size, ensuring performance and preventing system abuse.</li>
-      <li><strong>Vercel Blob Storage:</strong> Processed images are stored in the cloud, generating a public URL
-        which is then saved to MongoDB as a string reference.</li>
-    </ol>
-    </p>
-    <p>
-      The application maintains full CRUD functionality. When editing an item, the ID is stored in a hidden input field
-      to track which record is being modified. Image URLs are also stored in a hidden field, allowing the system to
-      manage both text data and image references seamlessly.
-    </p>
-
-    <h3>Learning Prompts</h3>
-    <p>Can you create a system map to describe the architecture of this web app?</p>
-    <p>Having added an image upload capability, what new use cases emerge?</p>
-    <p>Try uploading an image: drag and drop a photo, or click Browse to select one. Notice how it gets resized and
-      stored in the cloud.</p>
-    <p>Explore how the form handles both text fields and file uploads together in a single submission.</p>
+      <p>
+        Welcome to Analogue Archive
+      </p>
   </section>
 
   <footer>
-    Created by <a href="https://nsitu.ca">Harold Sikkema</a> in the context of
-    Systems Design in the Interaction Design program at Sheridan College.
+    Built and designed by Breana Velasco<br>
+    Fall Semester 2025 for Interaction Design at Sheridan College<br>
+    Persistent Data for System Design: Databases and Dynamic Data
   </footer>
 
   <script
