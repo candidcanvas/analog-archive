@@ -78,7 +78,7 @@
 
           <!-- Image upload section -->
           <fieldset class="upload-fieldset">
-            <legend>Album Cover</legend>
+            <legend>Image of your album</legend>
             <div id="uploadArea">
               <img
                 id="imagePreview"
@@ -111,13 +111,13 @@
           </fieldset>
 
           <fieldset>
-            <label for="title">Album Title</label>
+            <label for="title">Title</label>
             <input
               required
               type="text"
               name="title"
               id="title"
-              placeholder="e.g. Dark Side of the Moon"
+              placeholder="e.g. A Matter of Time"
               autocomplete="off"
             />
             <small class="validation">Title is required</small>
@@ -130,7 +130,7 @@
               type="text"
               name="artist"
               id="artist"
-              placeholder="e.g. Pink Floyd"
+              placeholder="e.g. Laufey"
               autocomplete="off"
             />
             <small class="validation">Artist is required</small>
@@ -146,12 +146,12 @@
           </fieldset>
 
           <fieldset>
-            <label for="storeId">Store / Vendor</label>
+            <label for="storeId">Bought from</label>
             <input
               type="text"
               name="storeId"
               id="storeId"
-              placeholder="Record Store or Vendor"
+              placeholder="e.g. Sonic Boom, Kops Records"
             />
           </fieldset>
 
@@ -161,29 +161,60 @@
               type="text"
               name="version"
               id="version"
-              placeholder="e.g. Original, Reissue, Remastered"
+              placeholder="e.g. Timeless Blue Cassette"
             />
           </fieldset>
 
           <fieldset>
-            <label for="releaseType">Release Type</label>
-            <select name="releaseType" id="releaseType">
-              <option value="" disabled selected>Select a type</option>
-              <option value="single">Single</option>
-              <option value="ep">EP</option>
-              <option value="full-length">Full Length</option>
-            </select>
+            <legend>Release Type</legend>
+            <label for="releaseType_single">
+              <input type="radio" name="releaseType" id="releaseType_single" value="single">
+              Single
+            </label>
+            <label for="releaseType_ep">
+              <input type="radio" name="releaseType" id="releaseType_ep" value="ep">
+              EP
+            </label>
+            <label for="releaseType_fullLength">
+              <input type="radio" name="releaseType" id="releaseType_fullLength" value="full-length">
+              Full length
+            </label>
+            <label for="releaseType_liveAlbum">
+              <input type="radio" name="releaseType" id="releaseType_fullLength" value="live-album">
+              Live album
+            </label>
+            <label for="releaseType_remix">
+              <input type="radio" name="releaseType" id="releaseType_fullLength" value="remix">
+              Remix
+            </label>
+            <label for="releaseType_compilation">
+              <input type="radio" name="releaseType" id="releaseType_fullLength" value="compilation">
+              Compilation
+            </label>
+            <label for="releaseType_demo">
+              <input type="radio" name="releaseType" id="releaseType_fullLength" value="demo">
+              Demo
+            </label>
+            <label for="releaseType_soundtrack">
+              <input type="radio" name="releaseType" id="releaseType_fullLength" value="soundtrack">
+              Soundtrack
+            </label>
           </fieldset>
 
           <fieldset>
-            <label for="format">Format</label>
-            <select name="format" id="format">
-              <option value="" disabled selected>Select a format</option>
-              <option value="vinyl">Vinyl</option>
-              <option value="cd">CD</option>
-              <option value="cassette">Cassette</option>
-              <option value="digital">Digital</option>
-            </select>
+            <legend>Format</legend>
+            <label for="format_vinyl">
+              <input type="radio" name="format" id="format_vinyl" value="vinyl">
+              Vinyl
+            </label>
+            <label for="format_cd">
+              <input type="radio" name="format" id="format_cd" value="cd">
+              CD
+            </label>
+            <label for="format_cassette">
+              <input type="radio" name="format" id="format_cassette" value="cassette">
+              Cassette
+            </label>
           </fieldset>
 
           <fieldset>
@@ -215,7 +246,7 @@
   </dialog>
 
   <main>
-    <h2>🐈 Noteworthy Cats</h2>
+    <h2>My catalogue</h2>
     <section id="contentArea"></section>
   </main>
 
