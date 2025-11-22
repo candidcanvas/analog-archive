@@ -146,7 +146,7 @@ const editItem = (data) => {
     }
 
     // Update the heading to indicate edit mode
-    formHeading.textContent = '🎵 Edit Album'
+    formHeading.textContent = 'Edit entry'
 
     // Show the dialog
     formDialog.showModal()
