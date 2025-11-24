@@ -71,37 +71,32 @@ button {
     border: 0;
     font-weight: 700;
     padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    color: white;
+    color: #FDF0D5;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.05rem;
     cursor: pointer;
 }
 
 button.save,
 #createButton,
 #browseButton {
-    background: rgb(3, 136, 3);
+    background: #E75A65;
 }
 
 button.save:hover,
 #createButton:hover,
 #browseButton:hover {
-    background-color: rgb(3, 103, 3);
+    background-color: #C1121F;
 }
 
-button.cancel {
-    background: rgb(134, 134, 134);
+button.cancel, #removeImageButton {
+    background: #B2A280;
 }
 
-button.cancel:hover {
-    background: rgb(101, 101, 101);
-}
-
-#removeImageButton {
-    background: rgb(211, 47, 47);
-}
-
-#removeImageButton:hover {
-    background-color: rgb(183, 28, 28);
+button.cancel:hover, #removeImageButton:hover {
+    background: #625844;
 }
 
 
@@ -137,10 +132,11 @@ dialog::backdrop {
     flex-direction: column;
     height: 100%;
     max-height: 90vh;
+    background-color: #FDF0D5;
 }
 
 .modal-header {
-    padding: 1.5rem 2rem;
+    padding: 2rem 2rem 1.5rem;
     flex-shrink: 0;
     display: inline-flex;
     justify-content: center;
@@ -148,6 +144,12 @@ dialog::backdrop {
 
 .modal-header h2 {
     margin: 0;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.05rem;
+    font-size: 2rem;
+    color: #E75A65;
 }
 
 .modal-header p {
@@ -173,7 +175,6 @@ dialog::backdrop {
 
 .modal-footer {
     padding: 1rem 2rem;
-    border-top: 1px solid #ddd;
     flex-shrink: 0;
     display: flex;
     gap: 1rem;
@@ -216,11 +217,17 @@ fieldset:has(textarea) {
 
 legend, label {
     text-align: left;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.05rem;
+    color: #669BBC;
 }
 
 .radioGroup {
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    overflow: visible;
 }
 
 textarea {
@@ -228,30 +235,74 @@ textarea {
     align-self: stretch;
 }
 
-fieldset:has(input[type=checkbox]) {
-    gap: 0.5rem;
-}
-
-/* layout checkboxes and radio buttons horizontally */
-label:has(input[type=radio]),
-label:has(input[type=checkbox]) {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-/* make radio and checkbox elements a bit bigger*/
-input[type=radio],
-input[type=checkbox] {
+input[type=radio]{
     margin: 0;
     padding: 0;
     width: 1.25rem;
     height: 1.25rem;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+label:has(input[type=radio]) {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.05rem;
+    color: #669BBC;
+    position: relative;
+    z-index: 1;
+}
+
+label:has(input[type=radio]):hover {
+    cursor: pointer;
+    color: #003049;
+    transition: all 0.3s ease;
+}
+
+/* custom checkbox created with the help of vscode agent */
+label:has(input[type=radio]:checked)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/circle.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.12;         
+    pointer-events: none;   
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    z-index: 0;
+    overflow: visible;   
+}
+
+label:has(input[type=radio]:checked)::before,
+label:has(input[type=radio]):hover::before {
+    opacity: 1;
 }
 
 input,.radioGroup, textarea{
     padding: 1rem;
     border: 2px solid #669BBC;
+    background: #FDF0D5;
+}
+
+input[type=text], textarea, input[type=date]{
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-size: 1.25rem;
+    font-weight: 400;
+    font-style: normal;
+    color: #003049
+}
+
+::placeholder {
+    color: #669BBC;
 }
 
 .validation {
@@ -316,20 +367,6 @@ textarea:user-invalid+.validation {
     margin: 0.5rem 0;
 }
 
-.item-icon {
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-    -webkit-mask-image: url(./assets/cat.svg);
-    mask-image: url(./assets/cat.svg);
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-position: center;
-}
-
 
 .item-actions {
     display: flex;
@@ -361,7 +398,7 @@ textarea:user-invalid+.validation {
 
 #uploadArea {
     height: 270px;
-    border: 2px dashed #669BBC;
+    border: 3px dashed #669BBC;
     padding: 20px;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -370,6 +407,7 @@ textarea:user-invalid+.validation {
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    background: #FDF0D5;
 }
 
 #uploadArea.ready {
@@ -399,8 +437,12 @@ textarea:user-invalid+.validation {
 
 #uploadArea p {
     margin: 0;
-    color: #666;
+    color: #B2A280;
     font-size: 0.9rem;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.05rem;
 }
 
 #noticeArea {
