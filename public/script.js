@@ -225,21 +225,29 @@ const renderItem = (item) => {
         ${imageHTML}
     
     <div class="artist-info">
-        <span>${item.artist || '<i>Unknown artist</i>'}</span>
+        <p>by ${item.artist || '<i>Unknown artist</i>'}</p>
     </div>
 
     <div class="item-info">
-        <div>${item.format || '—'}</div>
-        <div>${item.releaseType || '—'}</div>
+        <div>
+            <p>${item.format || '—'}</p>
+        </div>
+        <div>
+            <p>${item.releaseType || '—'}</p>
+        </div>
     </div>
 
     <div class="version-info">
-        <span>${item.version || '<i>Unknown version</i>'}</span>
+        <p class="write">${item.version || '—'}</p>
     </div>
 
     <section class="notes">  
-        <p>${item.notes}</p>
+        <p class="write">${item.notes}</p>
     </section>
+
+    <div class="store-info">
+        <p>from ${item.storeId} on ${item.dateBought}</p>
+    </div>
 
     `
     div.innerHTML = DOMPurify.sanitize(template);
