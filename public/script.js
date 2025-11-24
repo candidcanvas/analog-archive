@@ -224,16 +224,16 @@ const renderItem = (item) => {
     </div>
 
     <div class="item-info">
-        <div>
+        <div class="info-label">
             <p>${item.format || '—'}</p>
         </div>
-        <div>
+        <div class="info-label">
             <p>${item.releaseType || '—'}</p>
         </div>
     </div>
 
     <div class="version-info">
-        <p class="write">${item.version || '—'}</p>
+        <p class="write">${item.version || 'Version N/A'}</p>
     </div>
 
     <section class="notes">  
