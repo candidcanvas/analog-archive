@@ -159,8 +159,12 @@ dialog::backdrop {
     padding: 1.5rem 2rem;
     overflow-y: auto;
     flex-grow: 1;
+}
+
+form {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+
 }
 
 .leftForm {
