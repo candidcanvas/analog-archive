@@ -212,32 +212,35 @@ const renderItem = (item) => {
         ''
 
     const template = /*html*/`
-    
-        ${imageHTML}
+
+    <div class="item-actions">
+        <button class="delete-btn">Delete</button>
+        <button class="edit-btn">Edit</button>
+    </div>
     
     <div class="item-heading">
-        <h3> ${item.title} </h3>
-        <div class="artist-info">
-            <span>${item.artist || '<i>Unknown Artist</i>'}</span>
-        </div>
-    </div>
-    <div class="item-info"> 
-        <div class="meta">
-            <div><strong>Format:</strong> ${item.format || '—'}</div>
-            <div><strong>Type:</strong> ${item.releaseType || '—'}</div>
-            <div><strong>Version:</strong> ${item.version || '—'}</div>
-        </div>
-         ${calendarWidget(item.dateBought)}
+        <h3>${item.title}</h3>
     </div>
 
-    <section class="notes" style="${item.notes ? '' : 'display:none;'}">  
+        ${imageHTML}
+    
+    <div class="artist-info">
+        <span>${item.artist || '<i>Unknown artist</i>'}</span>
+    </div>
+
+    <div class="item-info">
+        <div>${item.format || '—'}</div>
+        <div>${item.releaseType || '—'}</div>
+    </div>
+
+    <div class="version-info">
+        <span>${item.version || '<i>Unknown version</i>'}</span>
+    </div>
+
+    <section class="notes">  
         <p>${item.notes}</p>
     </section>
 
-        <div class="item-actions">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-        </div>
     `
     div.innerHTML = DOMPurify.sanitize(template);
 
