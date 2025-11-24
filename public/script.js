@@ -183,15 +183,10 @@ const deleteItem = async (id) => {
 
 const calendarWidget = (date) => {
     if (!date) return ''
-    const month = new Date(date).toLocaleString("en-CA", { month: 'short', timeZone: "UTC" })
+    const month = new Date(date).toLocaleString("en-CA", { month: '2-digit', timeZone: "UTC" })
     const day = new Date(date).toLocaleString("en-CA", { day: '2-digit', timeZone: "UTC" })
     const year = new Date(date).toLocaleString("en-CA", { year: 'numeric', timeZone: "UTC" })
-    return ` <div class="calendar">
-                <div class="born"><img src="./assets/birthday.svg" /></div>
-                <div class="month">${month}</div>
-                <div class="day">${day}</div> 
-                <div class="year">${year}</div>
-            </div>`
+    return `<p>${day}/${month}/${year}</p>`
 
 }
 
@@ -246,7 +241,7 @@ const renderItem = (item) => {
     </section>
 
     <div class="store-info">
-        <p>from ${item.storeId} on ${item.dateBought}</p>
+        <p>from ${item.storeId} on ${calendarWidget(item.dateBought)}</p>
     </div>
 
     `
