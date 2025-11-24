@@ -104,24 +104,26 @@
               <small class="validation">Artist is required</small>
             </fieldset>
 
-            <fieldset>
-              <label for="dateBought">Date Bought</label>
-              <input
-                type="date"
-                name="dateBought"
-                id="dateBought"
-              />
-            </fieldset>
-            
-            <fieldset>
-              <label for="storeId">Bought from</label>
-              <input
-                type="text"
-                name="storeId"
-                id="storeId"
-                placeholder="e.g. Sonic Boom, Kops Records"
-              />
-            </fieldset>
+            <div class="storeDate">
+              <fieldset>
+                <label for="storeId">Bought from</label>
+                <input
+                  type="text"
+                  name="storeId"
+                  id="storeId"
+                  placeholder="e.g. Sonic Boom, Kops Records"
+                />
+              </fieldset>
+
+              <fieldset>
+                <label for="dateBought">Date Bought</label>
+                <input
+                  type="date"
+                  name="dateBought"
+                  id="dateBought"
+                />
+              </fieldset>
+            </div>
 
             <fieldset>
               <label for="notes">Notes</label>
@@ -136,7 +138,7 @@
 
             <fieldset>
               <legend>Release Type</legend>
-              <div class="release">
+              <div class="radioGroup">
                 <div class="releaseCol">
                   <label for="releaseType_single">
                     <input type="radio" name="releaseType" id="releaseType_single" value="Single">
@@ -151,32 +153,32 @@
                     Full length
                   </label>
                 </div>
-              </div>
 
-              <div class="releaseCol">
-                <label for="releaseType_liveAlbum">
-                  <input type="radio" name="releaseType" id="releaseType_liveAlbum" value="Live album">
-                  Live album
-                </label>
-                <label for="releaseType_remix">
-                  <input type="radio" name="releaseType" id="releaseType_remix" value="Remix">
-                  Remix
-                </label>
-                <label for="releaseType_compilation">
-                  <input type="radio" name="releaseType" id="releaseType_compilation" value="Compilation">
-                  Compilation
-                </label>
-              </div>
+                <div class="releaseCol">
+                  <label for="releaseType_liveAlbum">
+                    <input type="radio" name="releaseType" id="releaseType_liveAlbum" value="Live album">
+                    Live album
+                  </label>
+                  <label for="releaseType_remix">
+                    <input type="radio" name="releaseType" id="releaseType_remix" value="Remix">
+                    Remix
+                  </label>
+                  <label for="releaseType_compilation">
+                    <input type="radio" name="releaseType" id="releaseType_compilation" value="Compilation">
+                    Compilation
+                  </label>
+                </div>
 
-              <div class="releaseCol">
-                <label for="releaseType_demo">
-                  <input type="radio" name="releaseType" id="releaseType_demo" value="Demo">
-                  Demo
-                </label>
-                <label for="releaseType_soundtrack">
-                  <input type="radio" name="releaseType" id="releaseType_soundtrack" value="Soundtrack">
-                  Soundtrack
-                </label>
+                <div class="releaseCol">
+                  <label for="releaseType_demo">
+                    <input type="radio" name="releaseType" id="releaseType_demo" value="Demo">
+                    Demo
+                  </label>
+                  <label for="releaseType_soundtrack">
+                    <input type="radio" name="releaseType" id="releaseType_soundtrack" value="Soundtrack">
+                    Soundtrack
+                  </label>
+                </div>
               </div>
             </fieldset>
           </div>
@@ -218,18 +220,22 @@
 
             <fieldset>
               <legend>Format</legend>
-              <label for="format_vinyl">
-                <input type="radio" name="format" id="format_vinyl" value="Vinyl">
-                Vinyl
-              </label>
-              <label for="format_cd">
-                <input type="radio" name="format" id="format_cd" value="CD">
-                CD
-              </label>
-              <label for="format_cassette">
-                <input type="radio" name="format" id="format_cassette" value="Cassette">
-                Cassette
-              </label>
+              <div class="radioGroup">
+                <label for="format_vinyl">
+                  <input type="radio" name="format" id="format_vinyl" value="Vinyl">
+                  Vinyl
+                </label>
+
+                <label for="format_cd">
+                  <input type="radio" name="format" id="format_cd" value="CD">
+                  CD
+                </label>
+
+                <label for="format_cassette">
+                  <input type="radio" name="format" id="format_cassette" value="Cassette">
+                  Cassette
+                </label>
+              </div>
             </fieldset>
 
             <fieldset>
@@ -257,7 +263,7 @@
           type="button"
           class="save"
           id="saveButton"
-        >Save</button>
+        >Confirm</button>
       </div>
     </div>
   </dialog>
