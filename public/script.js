@@ -206,11 +206,14 @@ const renderItem = (item) => {
         :
         ''
 
-    const template = /*html*/`
-
+    const template = /*html, buttons styled with the vscode agent*/` 
     <div class="item-actions">
-        <button class="delete-btn">Delete</button>
-        <button class="edit-btn">Edit</button>
+\       <button class="delete-btn" aria-label="Delete">
+         <img src="assets/delete.svg" alt="" class="icon" />
+        </button>
+        <button class="edit-btn" aria-label="Edit">
+         <img src="assets/edit.svg" alt="" class="icon" />
+        </button>
     </div>
     
     <div class="item-heading">
