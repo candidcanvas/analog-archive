@@ -16,7 +16,6 @@ model albums {
   version     String? // album variants
   releaseType String? // single, ep, full length
   format      String? // vinyl, cd, cassette
-  rating      String  // 1-5 stars
   notes       String?
   imageUrl    String?
   createdAt   DateTime  @default(now()) @db.Date
