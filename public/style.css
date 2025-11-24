@@ -163,6 +163,14 @@ dialog::backdrop {
     grid-template-columns: repeat(12, 1fr);
 }
 
+.leftForm {
+    grid-column: 1 / span 7;
+}
+
+.rightForm {
+    grid-column: 8 / span 5;
+}
+
 .modal-footer {
     padding: 1rem 2rem;
     border-top: 1px solid #ddd;
