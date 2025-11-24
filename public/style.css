@@ -10,41 +10,49 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
-}
-
-
-h2 img {
-    width: 2rem;
-}
-
-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin: 1rem;
+    background-color: #FFFBF2;
 }
 
 footer {
     text-align: center;
     padding: 3rem;
+    font-size: 0.9rem;
 }
 
+a {
+    color: #E75A65;
+    text-decoration: none;
+}
 
 header {
     display: grid;
-    column-gap: 6rem;
+    grid-template-columns: auto auto;
+    margin-top: 2rem;
+    column-gap: 10rem;
+    width: 100%;
 }
 
-header p,
-header ul {
-    margin: 1rem;
+header h1{
+    margin: 2rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    color: #E75A65;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.05rem;
 }
 
-#intro {
+#intro, #status, footer {
     max-width: 60rem;
     margin: auto;
-    text-align: left;
+    text-align: center;
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.05rem;
+    color: #003049;
 }
 
 button {
