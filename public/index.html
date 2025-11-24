@@ -76,39 +76,6 @@
             id="imageUrl"
           />
 
-          <!-- Image upload section -->
-          <fieldset class="upload-fieldset">
-            <legend>Image of your album</legend>
-            <div id="uploadArea">
-              <img
-                id="imagePreview"
-                src="assets/photo.svg"
-                alt="Image preview"
-              />
-              <div class="upload-controls">
-                <input
-                  type="file"
-                  id="fileInput"
-                  accept="image/*"
-                  style="display:none"
-                />
-                <button
-                  type="button"
-                  id="browseButton"
-                >Browse</button>
-                <button
-                  type="button"
-                  id="removeImageButton"
-                  style="display:none;"
-                >Remove</button>
-                <p id="uploadInstructions">or drag and drop an image here</p>
-              </div>
-            </div>
-            <div
-              id="noticeArea"
-              style="display:none"
-            ></div>
-          </fieldset>
 
           <fieldset>
             <label for="title">Title</label>
@@ -146,6 +113,25 @@
           </fieldset>
 
           <fieldset>
+            <legend>Rating</legend>
+              <label for="ratingFive">
+                <input type="radio" name="rating" id="ratingFive" value="5">
+              </label>
+              <label for="ratingFour">
+                <input type="radio" name="rating" id="ratingFour" value="4">
+              </label>
+              <label for="ratingThree">
+                <input type="radio" name="rating" id="ratingThree" value="3">
+              </label>
+              <label for="ratingTwo">
+                <input type="radio" name="rating" id="ratingTwo" value="2">
+              </label>
+              <label for="ratingOne">
+                <input type="radio" name="rating" id="ratingOne" value="1">
+              </label>
+          </fieldset>
+
+          <fieldset>
             <label for="storeId">Bought from</label>
             <input
               type="text"
@@ -156,13 +142,14 @@
           </fieldset>
 
           <fieldset>
-            <label for="version">Version</label>
-            <input
-              type="text"
-              name="version"
-              id="version"
-              placeholder="e.g. Timeless Blue Cassette"
-            />
+            <label for="notes">Notes</label>
+            <textarea
+              placeholder="Notes about pressing, condition, or special edition"
+              name="notes"
+              id="notes"
+              rows="5"
+              cols="30"
+            ></textarea>
           </fieldset>
 
           <fieldset>
@@ -201,6 +188,40 @@
             </label>
           </fieldset>
 
+          <!-- Image upload section -->
+          <fieldset class="upload-fieldset">
+            <legend>Image of your album</legend>
+            <div id="uploadArea">
+              <img
+                id="imagePreview"
+                src="assets/photo.svg"
+                alt="Image preview"
+              />
+              <div class="upload-controls">
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  style="display:none"
+                />
+                <button
+                  type="button"
+                  id="browseButton"
+                >Browse</button>
+                <button
+                  type="button"
+                  id="removeImageButton"
+                  style="display:none;"
+                >Remove</button>
+                <p id="uploadInstructions">or drag and drop an image here</p>
+              </div>
+            </div>
+            <div
+              id="noticeArea"
+              style="display:none"
+            ></div>
+          </fieldset>
+
           <fieldset>
             <legend>Format</legend>
             <label for="format_vinyl">
@@ -218,15 +239,15 @@
           </fieldset>
 
           <fieldset>
-            <label for="notes">Notes</label>
-            <textarea
-              placeholder="Notes about pressing, condition, or special edition"
-              name="notes"
-              id="notes"
-              rows="5"
-              cols="30"
-            ></textarea>
+            <label for="version">Version</label>
+            <input
+              type="text"
+              name="version"
+              id="version"
+              placeholder="e.g. Timeless Blue Cassette"
+            />
           </fieldset>
+
         </form>
       </div>
 

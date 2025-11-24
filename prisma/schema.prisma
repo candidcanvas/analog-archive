@@ -11,11 +11,12 @@ model albums {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   artist      String
-  dateBought  DateTime? @db.Date
-  storeId     String?
+  dateBought  DateTime @db.Date
+  storeId     String
   version     String? // album variants
   releaseType String? // single, ep, full length
   format      String? // vinyl, cd, cassette
+  rating      String      
   notes       String?
   imageUrl    String?
   createdAt   DateTime  @default(now()) @db.Date
