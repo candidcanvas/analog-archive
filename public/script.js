@@ -186,7 +186,7 @@ const calendarWidget = (date) => {
     const month = new Date(date).toLocaleString("en-CA", { month: '2-digit', timeZone: "UTC" })
     const day = new Date(date).toLocaleString("en-CA", { day: '2-digit', timeZone: "UTC" })
     const year = new Date(date).toLocaleString("en-CA", { year: 'numeric', timeZone: "UTC" })
-    return `<p>${day}/${month}/${year}</p>`
+    return `${day}/${month}/${year}`
 
 }
 
