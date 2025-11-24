@@ -1,7 +1,7 @@
 body {
     height: 100%;
     width: 100%;
-    margin: 50px;
+    margin: 0;
     text-align: center;
     font-family: "Jost", sans-serif;
     font-optical-sizing: auto;
@@ -52,8 +52,8 @@ footer {
 
 
 header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    column-gap: 6rem;
 }
 
 header p,
