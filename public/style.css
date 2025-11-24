@@ -137,8 +137,9 @@ dialog::backdrop {
 
 .modal-header {
     padding: 1.5rem 2rem;
-    border-bottom: 1px solid #ddd;
     flex-shrink: 0;
+    display: inline-flex;
+    justify-content: center;
 }
 
 .modal-header h2 {
@@ -154,6 +155,8 @@ dialog::backdrop {
     padding: 1.5rem 2rem;
     overflow-y: auto;
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
 }
 
 .modal-footer {
@@ -162,7 +165,7 @@ dialog::backdrop {
     flex-shrink: 0;
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
 /* Create button */

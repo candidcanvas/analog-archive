@@ -43,13 +43,14 @@
 <body>
   <header>
     <h1>analogue.archive</h1>
+    <button id="createButton">add new album</button>
   </header>
+
   <section id="status">
     <p id="readyStatus">✅ MongoDB is Ready</p>
     <p id="notReadyStatus">❌ MongoDB is not connected. Please check your connection string in <code>.env</code> file.
     </p>
   </section>
-  <button id="createButton">add new album</button>
 
   <dialog id="formDialog">
     <div class="modal-container">
@@ -76,158 +77,171 @@
             id="imageUrl"
           />
 
-
-          <fieldset>
-            <label for="title">Title</label>
-            <input
-              required
-              type="text"
-              name="title"
-              id="title"
-              placeholder="e.g. A Matter of Time"
-              autocomplete="off"
-            />
-            <small class="validation">Title is required</small>
-          </fieldset>
-
-          <fieldset>
-            <label for="artist">Artist</label>
-            <input
-              required
-              type="text"
-              name="artist"
-              id="artist"
-              placeholder="e.g. Laufey"
-              autocomplete="off"
-            />
-            <small class="validation">Artist is required</small>
-          </fieldset>
-
-          <fieldset>
-            <label for="dateBought">Date Bought</label>
-            <input
-              type="date"
-              name="dateBought"
-              id="dateBought"
-            />
-          </fieldset>
-          
-          <fieldset>
-            <label for="storeId">Bought from</label>
-            <input
-              type="text"
-              name="storeId"
-              id="storeId"
-              placeholder="e.g. Sonic Boom, Kops Records"
-            />
-          </fieldset>
-
-          <fieldset>
-            <label for="notes">Notes</label>
-            <textarea
-              placeholder="Notes about pressing, condition, or special edition"
-              name="notes"
-              id="notes"
-              rows="5"
-              cols="30"
-            ></textarea>
-          </fieldset>
-
-          <fieldset>
-            <legend>Release Type</legend>
-            <label for="releaseType_single">
-              <input type="radio" name="releaseType" id="releaseType_single" value="Single">
-              Single
-            </label>
-            <label for="releaseType_ep">
-              <input type="radio" name="releaseType" id="releaseType_ep" value="EP">
-              EP
-            </label>
-            <label for="releaseType_fullLength">
-              <input type="radio" name="releaseType" id="releaseType_fullLength" value="Full length">
-              Full length
-            </label>
-            <label for="releaseType_liveAlbum">
-              <input type="radio" name="releaseType" id="releaseType_liveAlbum" value="Live album">
-              Live album
-            </label>
-            <label for="releaseType_remix">
-              <input type="radio" name="releaseType" id="releaseType_remix" value="Remix">
-              Remix
-            </label>
-            <label for="releaseType_compilation">
-              <input type="radio" name="releaseType" id="releaseType_compilation" value="Compilation">
-              Compilation
-            </label>
-            <label for="releaseType_demo">
-              <input type="radio" name="releaseType" id="releaseType_demo" value="Demo">
-              Demo
-            </label>
-            <label for="releaseType_soundtrack">
-              <input type="radio" name="releaseType" id="releaseType_soundtrack" value="Soundtrack">
-              Soundtrack
-            </label>
-          </fieldset>
-
-          <!-- Image upload section -->
-          <fieldset class="upload-fieldset">
-            <legend>Image of your album</legend>
-            <div id="uploadArea">
-              <img
-                id="imagePreview"
-                src="assets/photo.svg"
-                alt="Image preview"
+          <div class="leftForm">
+            <fieldset>
+              <label for="title">Title</label>
+              <input
+                required
+                type="text"
+                name="title"
+                id="title"
+                placeholder="e.g. A Matter of Time"
+                autocomplete="off"
               />
-              <div class="upload-controls">
-                <input
-                  type="file"
-                  id="fileInput"
-                  accept="image/*"
-                  style="display:none"
-                />
-                <button
-                  type="button"
-                  id="browseButton"
-                >Browse</button>
-                <button
-                  type="button"
-                  id="removeImageButton"
-                  style="display:none;"
-                >Remove</button>
-                <p id="uploadInstructions">or drag and drop an image here</p>
+              <small class="validation">Title is required</small>
+            </fieldset>
+
+            <fieldset>
+              <label for="artist">Artist</label>
+              <input
+                required
+                type="text"
+                name="artist"
+                id="artist"
+                placeholder="e.g. Laufey"
+                autocomplete="off"
+              />
+              <small class="validation">Artist is required</small>
+            </fieldset>
+
+            <fieldset>
+              <label for="dateBought">Date Bought</label>
+              <input
+                type="date"
+                name="dateBought"
+                id="dateBought"
+              />
+            </fieldset>
+            
+            <fieldset>
+              <label for="storeId">Bought from</label>
+              <input
+                type="text"
+                name="storeId"
+                id="storeId"
+                placeholder="e.g. Sonic Boom, Kops Records"
+              />
+            </fieldset>
+
+            <fieldset>
+              <label for="notes">Notes</label>
+              <textarea
+                placeholder="Notes about pressing, condition, or special edition"
+                name="notes"
+                id="notes"
+                rows="5"
+                cols="30"
+              ></textarea>
+            </fieldset>
+
+            <fieldset>
+              <legend>Release Type</legend>
+              <div class="release">
+                <div class="releaseCol">
+                  <label for="releaseType_single">
+                    <input type="radio" name="releaseType" id="releaseType_single" value="Single">
+                    Single
+                  </label>
+                  <label for="releaseType_ep">
+                    <input type="radio" name="releaseType" id="releaseType_ep" value="EP">
+                    EP
+                  </label>
+                  <label for="releaseType_fullLength">
+                    <input type="radio" name="releaseType" id="releaseType_fullLength" value="Full length">
+                    Full length
+                  </label>
+                </div>
               </div>
-            </div>
-            <div
-              id="noticeArea"
-              style="display:none"
-            ></div>
-          </fieldset>
 
-          <fieldset>
-            <legend>Format</legend>
-            <label for="format_vinyl">
-              <input type="radio" name="format" id="format_vinyl" value="Vinyl">
-              Vinyl
-            </label>
-            <label for="format_cd">
-              <input type="radio" name="format" id="format_cd" value="CD">
-              CD
-            </label>
-            <label for="format_cassette">
-              <input type="radio" name="format" id="format_cassette" value="Cassette">
-              Cassette
-            </label>
-          </fieldset>
+              <div class="releaseCol">
+                <label for="releaseType_liveAlbum">
+                  <input type="radio" name="releaseType" id="releaseType_liveAlbum" value="Live album">
+                  Live album
+                </label>
+                <label for="releaseType_remix">
+                  <input type="radio" name="releaseType" id="releaseType_remix" value="Remix">
+                  Remix
+                </label>
+                <label for="releaseType_compilation">
+                  <input type="radio" name="releaseType" id="releaseType_compilation" value="Compilation">
+                  Compilation
+                </label>
+              </div>
 
-          <fieldset>
-            <label for="version">Version</label>
-            <input
-              type="text"
-              name="version"
-              id="version"
-              placeholder="e.g. Timeless Blue Cassette"
-            />
-          </fieldset>
+              <div class="releaseCol">
+                <label for="releaseType_demo">
+                  <input type="radio" name="releaseType" id="releaseType_demo" value="Demo">
+                  Demo
+                </label>
+                <label for="releaseType_soundtrack">
+                  <input type="radio" name="releaseType" id="releaseType_soundtrack" value="Soundtrack">
+                  Soundtrack
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        
+          <div class="rightForm">
+            <!-- Image upload section -->
+            <fieldset class="upload-fieldset">
+              <legend>Image of your album</legend>
+              <div id="uploadArea">
+                <img
+                  id="imagePreview"
+                  src="assets/photo.svg"
+                  alt="Image preview"
+                />
+                <div class="upload-controls">
+                  <input
+                    type="file"
+                    id="fileInput"
+                    accept="image/*"
+                    style="display:none"
+                  />
+                  <button
+                    type="button"
+                    id="browseButton"
+                  >Browse</button>
+                  <button
+                    type="button"
+                    id="removeImageButton"
+                    style="display:none;"
+                  >Remove</button>
+                  <p id="uploadInstructions">or drag and drop an image here</p>
+                </div>
+              </div>
+              <div
+                id="noticeArea"
+                style="display:none"
+              ></div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Format</legend>
+              <label for="format_vinyl">
+                <input type="radio" name="format" id="format_vinyl" value="Vinyl">
+                Vinyl
+              </label>
+              <label for="format_cd">
+                <input type="radio" name="format" id="format_cd" value="CD">
+                CD
+              </label>
+              <label for="format_cassette">
+                <input type="radio" name="format" id="format_cassette" value="Cassette">
+                Cassette
+              </label>
+            </fieldset>
+
+            <fieldset>
+              <label for="version">Version</label>
+              <input
+                type="text"
+                name="version"
+                id="version"
+                placeholder="e.g. Timeless Blue Cassette"
+              />
+            </fieldset>
+          </div>
 
         </form>
       </div>
@@ -248,7 +262,7 @@
   </dialog>
 
   <main>
-    <h2>My catalogue</h2>
+    <h2>My library</h2>
     <section id="contentArea"></section>
   </main>
 
