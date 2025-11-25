@@ -249,30 +249,47 @@ label:has(input[type=radio]) {
     z-index: 1;
 }
 
+/* custom checkbox created with the help of vscode agent */
 label:has(input[type=radio]):hover {
     cursor: pointer;
     color: #003049;
     transition: all 0.3s ease;
 }
 
-/* custom checkbox created with the help of vscode agent */
 label:has(input[type=radio]:checked)::before {
     content: "";
     position: absolute;
-    inset: 0;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;   
+    height: 200%;
     background-image: url('./assets/circle.svg');
     background-repeat: no-repeat;
-    background-size: 100%;
-    opacity: 0.12;         
+    background-position: center;
+    background-size: contain;
+    opacity: 1;         
     pointer-events: none;   
     transition: opacity 0.12s ease, transform 0.12s ease;
     z-index: 0;
-    overflow: visible;   
+    overflow: visible;
 }
 
-label:has(input[type=radio]:checked)::before,
-label:has(input[type=radio]):hover::before {
-    opacity: 1;
+#formatGroup {
+    overflow: visible;
+}
+
+#formatGroup label {
+    margin: 0 1rem;
+    position: relative;
+    overflow: visible;
+}
+
+#formatGroup label:has(input[type=radio]:checked)::before {
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    overflow: visible;
 }
 /* end */
 
@@ -292,7 +309,7 @@ input[type=text], textarea, input[type=date]{
 }
 
 ::placeholder {
-    color: #669BBC;
+    color: #669BBC85;
 }
 
 .validation {
